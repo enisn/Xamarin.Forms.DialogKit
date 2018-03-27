@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Plugin.DialogKit.Views.InputView">
+  <ContentView.Content>
+        <StackLayout Padding="10" BackgroundColor="White" VerticalOptions="CenterAndExpand" Margin="25">
+            <Label FontAttributes="Bold" FontSize="Large" Text="{Binding Title}"/>
+            <Label FontSize="Large" Text="{Binding Message}"/>
+            <Entry x:Name="txtInput" Keyboard="{Binding Keyboard}"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="OK" Clicked="Confirm_Clicked" />
+                <Button Text="Cancel" Clicked="Cancel_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

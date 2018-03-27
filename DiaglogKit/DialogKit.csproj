@@ -1,0 +1,101 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;</TargetFrameworks>
+    <AssemblyName>Plugin.DiaglogKit</AssemblyName>
+    <RootNamespace>Plugin.DiaglogKit</RootNamespace>
+    <PackageId>Xamarin.Forms.DialogKit</PackageId>
+    
+    <Product>$(AssemblyName) ($(TargetFramework))</Product>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
+    <Version>0.1.0.0</Version>
+    <PackageVersion>1.0.0.0</PackageVersion>
+    <PackOnBuild>false</PackOnBuild>
+    <NeutralLanguage>en</NeutralLanguage>
+    <LangVersion>default</LangVersion>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD2_0</DefineConstants>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
+    <UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    
+    <!--TODO: Fill these in-->
+    <PackageLicenseUrl>LINK TO LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>LINK TO PROJECT</PackageProjectUrl>
+    <RepositoryUrl>LINK TO PROJECT</RepositoryUrl>
+    <PackageReleaseNotes>RELEASE NOTES</PackageReleaseNotes>
+    <PackageIconUrl>http://enisnecipoglu.com/Plugins/Contacts.png</PackageIconUrl>
+    <PackageTags>xamarin, windows, ios, android, xamarin.forms, plugin, DiaglogKit</PackageTags>
+    
+    <Title>DiaglogKit Plugin for Xamarin and Windows</Title>
+    <Summary>Summary of nuget</Summary>
+    <Description>Get easily different type inputs from users</Description>
+
+    <Owners>YOU</Owners>
+    <Authors>Enis Necipoğlu</Authors>
+    <Copyright>Copyright 2018</Copyright>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>enisn_loadingubbton.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.2.0" PrivateAssets="All" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.0.4" />
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
+    <!--<PackageReference Include="Rg.Plugins.Popup" Version="1.0.4" />-->
+    <Compile Include="Shared\**\*.cs" />
+    <Compile Include="Views\**\*.cs" />
+  </ItemGroup>
+
+  <!--<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.0' ">
+  </ItemGroup>-->
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
+    <!--<PackageReference Include="Rg.Plugins.Popup" Version="1.0.4" />-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Shared\DialogKit.cs" />
+    <None Remove="Shared\IDialogKit.cs" />
+    <None Remove="Views\InputView.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\ColorPickerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\InputView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+
+
+  <!--
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+    <Compile Include="Platforms\DotNet\**\*.cs" />
+  </ItemGroup>
+  -->
+
+
+  <!--
+  <ItemGroup Condition=" '$(TargetFramework)' == 'Tizen40' ">
+    <Compile Include="Platforms\Tizen\**\*.cs" />
+    <PackageReference Include="Tizen.NET" Version="4.0.0" />
+  </ItemGroup>
+  -->
+
+  <!--
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Compile Include="Platforms\DotNet\**\*.cs" />
+  </ItemGroup>
+  -->
+
+
+
+
+
+  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
+</Project>
