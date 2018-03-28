@@ -12,10 +12,11 @@ namespace Plugin.DialogKit.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class InputView : ContentView
 	{
-        public InputView(string title, string message)
+        public InputView(string title, string message,Keyboard keyboard = null)
         {
             InitializeComponent();
             this.BindingContext = new { Title = title, Message = message };
+            txtInput.Keyboard = keyboard;
             txtInput.Focus();
         }
 

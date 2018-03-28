@@ -9,7 +9,7 @@
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
-    <Version>0.1.0.0</Version>
+    <Version>1.0.0.2</Version>
     <PackageVersion>1.0.0.0</PackageVersion>
     <PackOnBuild>false</PackOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
@@ -21,12 +21,12 @@
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     
     <!--TODO: Fill these in-->
-    <PackageLicenseUrl>LINK TO LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>LINK TO PROJECT</PackageProjectUrl>
-    <RepositoryUrl>LINK TO PROJECT</RepositoryUrl>
-    <PackageReleaseNotes>RELEASE NOTES</PackageReleaseNotes>
-    <PackageIconUrl>http://enisnecipoglu.com/Plugins/Contacts.png</PackageIconUrl>
-    <PackageTags>xamarin, windows, ios, android, xamarin.forms, plugin, DiaglogKit</PackageTags>
+    <PackageLicenseUrl>https://github.com/enisn/Xamarin.Forms.DialogKit</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/enisn/Xamarin.Forms.DialogKit</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/enisn/Xamarin.Forms.DialogKit</RepositoryUrl>
+    <PackageReleaseNotes>Under Development</PackageReleaseNotes>
+    <PackageIconUrl>http://enisnecipoglu.com/Plugins/dialogkit.png</PackageIconUrl>
+    <PackageTags>xamarin,ios, android, xamarin.forms, plugin, DiaglogKit, Popup, ColorPicker, Input Dialog,Dialog, Color Dialog</PackageTags>
     
     <Title>DiaglogKit Plugin for Xamarin and Windows</Title>
     <Summary>Summary of nuget</Summary>
@@ -59,14 +59,22 @@
   <ItemGroup>
     <None Remove="Shared\DialogKit.cs" />
     <None Remove="Shared\IDialogKit.cs" />
+    <None Remove="Views\CheckBoxView.xaml.cs" />
     <None Remove="Views\InputView.xaml.cs" />
+    <None Remove="Views\RadioButtonView.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\CheckBoxView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\ColorPickerView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\InputView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RadioButtonView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

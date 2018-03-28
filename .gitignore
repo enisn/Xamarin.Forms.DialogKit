@@ -3,3 +3,12 @@
 ################################################################################
 
 /DiaglogKit/obj
+/DiaglogKit/bin/Release
+/Plugin.DialogKit/obj
+/Plugin.DialogKit/bin/Release
+/Sample.DialogKit/Sample.DialogKit/obj
+/Sample.DialogKit/Sample.DialogKit/bin
+/Sample.DialogKit/Sample.DialogKit.Android/obj
+/Sample.DialogKit/Sample.DialogKit.Android/bin
+/Sample.DialogKit/Sample.DialogKit.iOS/obj
+/.vs/DialogKit/v15

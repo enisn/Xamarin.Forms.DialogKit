@@ -7,5 +7,6 @@
         <Button Text="Choose Color..." Clicked="ChooseColor_Clicked"/>
         <Button Text="Input Text..." Clicked="InputText_Clicked"/>
     </StackLayout>
+    
 
 </ContentPage>
