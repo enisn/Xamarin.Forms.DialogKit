@@ -30,6 +30,10 @@ namespace Sample.DialogKit
                 (sender as Button).Text = result;
             }
         }
+        private async void InputCheckBox_Clicked(object sender, EventArgs e)
+        {
+            var result = await Plugin.DialogKit.CrossDiaglogKit.Current.GetCheckboxResultAsync("Başlık", "Choose some", "Option 1", "Option 2");
+        }
 
     }
 }

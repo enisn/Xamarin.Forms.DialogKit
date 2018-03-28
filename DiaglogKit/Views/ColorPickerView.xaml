@@ -13,8 +13,8 @@
             </ScrollView>
 
             <StackLayout Margin="10">
-                <Button Text="OK" Clicked="Confirm_Clicked" />
                 <Button Text="Cancel" Clicked="Cancel_Clicked"/>
+                <Button Text="OK" Clicked="Confirm_Clicked" />
             </StackLayout>
 
         </StackLayout>

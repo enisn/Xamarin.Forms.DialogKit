@@ -4,6 +4,7 @@ using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -38,6 +39,24 @@ namespace Plugin.DialogKit.Shared
             _dialogView.Picked += (s, o) => { cts.SetResult(o); PopupNavigation.PopAsync(); };
             PopupNavigation.PushAsync(new PopupPage { Content = _dialogView });
             return cts.Task;
+        }
+        public Task<string[]> GetCheckboxResultAsync(string title,string message, params string[] options)
+        {
+            var tcs = new TaskCompletionSource<string[]>();
+            var _dialogView = new Plugin.DialogKit.Views.CheckBoxView(title, message, options);
+            _dialogView.Completed += (s, e) => { tcs.SetResult(_dialogView.SelectedValues.ToArray()); PopupNavigation.PopAsync(); };
+            PopupNavigation.PushAsync(new PopupPage { Content = _dialogView });
+
+            return tcs.Task;
+        }
+        public Task<int[]> GetCheckboxResultAsync(string title, string message, Dictionary<int,string> options)
+        {
+            var tcs = new TaskCompletionSource<int[]>();
+            var _dialogView = new Plugin.DialogKit.Views.CheckBoxView(title, message, options);
+            _dialogView.Completed += (s, e) => { tcs.SetResult(_dialogView.SelectedKeys.ToArray()); PopupNavigation.PopAsync(); };
+            PopupNavigation.PushAsync(new PopupPage { Content = _dialogView });
+
+            return tcs.Task;
         }
     }
 }

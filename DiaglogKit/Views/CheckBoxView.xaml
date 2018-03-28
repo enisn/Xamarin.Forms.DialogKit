@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Plugin.DiaglogKit.Views.CheckBoxView">
+             x:Class="Plugin.DialogKit.Views.CheckBoxView">
     <ContentView.Content>
         <StackLayout BackgroundColor="White" VerticalOptions="CenterAndExpand" Margin="25">
             <Label Margin="10" FontAttributes="Bold" FontSize="Large" Text="{Binding Title}"/>
             <Label Margin="10,0"  FontSize="Large" Text="{Binding Message}"/>
-            <StackLayout x:Name="slContent" Spacing="0" Orientation="Horizontal" Padding="0,35,0,0">
+            <StackLayout x:Name="slContent" Spacing="0" Padding="0,35,0,0">
                 <!--CONTENT WILL BE PLACED AT RUNTIME-->
             </StackLayout>
             <StackLayout Margin="10">
-                <Button Text="OK" Clicked="Confirm_Clicked" />
                 <Button Text="Cancel" Clicked="Cancel_Clicked"/>
+                <Button Text="OK" Clicked="Confirm_Clicked" />
             </StackLayout>
 
         </StackLayout>
