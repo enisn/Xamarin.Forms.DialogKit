@@ -36,6 +36,7 @@ namespace Plugin.DialogKit.Shared
             if (keyboard == null) keyboard = Keyboard.Default;
             var cts = new TaskCompletionSource<string>();
             var _dialogView = new Plugin.DialogKit.Views.InputView(title, message);
+            _dialogView.FocusEntry();
             _dialogView.Picked += (s, o) => { cts.SetResult(o); PopupNavigation.PopAsync(); };
             PopupNavigation.PushAsync(new PopupPage { Content = _dialogView });
             return cts.Task;

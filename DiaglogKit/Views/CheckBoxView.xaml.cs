@@ -95,9 +95,11 @@ namespace Plugin.DialogKit.Views
         public int Key { get; set; }
         public string Value { get => lblOption.Text; set => lblOption.Text = value; }
         public bool IsChecked { get => boxSelected.IsVisible; set => boxSelected.IsVisible = value; }
+        public Color Color { get => boxSelected.BackgroundColor; set => boxSelected.BackgroundColor = value; }
+        public static readonly BindableProperty ColorProperty = BindableProperty.Create(nameof(Color), typeof(Color), typeof(Checkbox), Color.Accent, propertyChanged: (bo, ov, nv) => (bo as Checkbox).Color = (Color)nv);
         public static readonly BindableProperty IsCheckedProperty = BindableProperty.Create(nameof(IsChecked), typeof(bool), typeof(Checkbox), false, propertyChanged: (bo, ov, nv) => (bo as Checkbox).IsChecked = (bool)nv);
-
-
+        public static readonly BindableProperty KeyProperty = BindableProperty.Create(nameof(Key), typeof(int), typeof(Checkbox), 0, propertyChanged: (bo, ov, nv) => (bo as Checkbox).Key = (int)nv);
+        public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value),typeof(string),typeof(Checkbox),"",propertyChanged:(bo,ov,nv)=>(bo as Checkbox).Value = (string)nv);
 
 
     }

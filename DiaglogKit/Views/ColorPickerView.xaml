@@ -12,9 +12,9 @@
                 </StackLayout>
             </ScrollView>
 
-            <StackLayout Margin="10">
-                <Button Text="Cancel" Clicked="Cancel_Clicked"/>
-                <Button Text="OK" Clicked="Confirm_Clicked" />
+            <StackLayout Margin="10" Orientation="Horizontal">
+                <Button Text="OK" Clicked="Confirm_Clicked" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Cancel" Clicked="Cancel_Clicked" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
 
         </StackLayout>

@@ -7,6 +7,13 @@
         <Button Text="Choose Color..." Clicked="ChooseColor_Clicked"/>
         <Button Text="Input Text..." Clicked="InputText_Clicked"/>
         <Button Text="ChooseCheckBoxes..." Clicked="InputCheckBox_Clicked"/>
+
+
+        <StackLayout Orientation="Horizontal" BackgroundColor="#005DA4">
+            <Button Text="OKy" HorizontalOptions="FillAndExpand"/>
+            <Button Text="CANCEL" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+        
     </StackLayout>
     
 

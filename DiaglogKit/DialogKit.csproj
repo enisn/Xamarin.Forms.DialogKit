@@ -10,7 +10,7 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
     <Version>1.0.0</Version>
-    <PackageVersion>0.8.1.0</PackageVersion>
+    <PackageVersion>0.8.5.0</PackageVersion>
     <PackOnBuild>false</PackOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
     <LangVersion>default</LangVersion>
@@ -28,8 +28,8 @@
     <PackageIconUrl>http://enisnecipoglu.com/Plugins/dialogkit.png</PackageIconUrl>
     <PackageTags>xamarin,ios, android, xamarin.forms, plugin, DiaglogKit, Popup, ColorPicker, Input Dialog,Dialog, Color Dialog</PackageTags>
     
-    <Title>DiaglogKit Plugin for Xamarin and Windows</Title>
-    <Summary>Summary of nuget</Summary>
+    <Title>Xamarin Forms Dialog Kit</Title>
+    <Summary>Quick dialogs to get input from users</Summary>
     <Description>Get easily different type inputs from users</Description>
 
     <Owners>YOU</Owners>

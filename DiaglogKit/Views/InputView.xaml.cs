@@ -17,10 +17,13 @@ namespace Plugin.DialogKit.Views
             InitializeComponent();
             this.BindingContext = new { Title = title, Message = message };
             txtInput.Keyboard = keyboard;
-            txtInput.Focus();
         }
 
         public event EventHandler<string> Picked;
+        public void FocusEntry()
+        {
+            txtInput.Focus();
+        }
         public void Confirm_Clicked(object sender, EventArgs e)
         {
             Picked?.Invoke(this, txtInput.Text);

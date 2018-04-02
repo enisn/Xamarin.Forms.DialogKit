@@ -9,9 +9,9 @@
             <StackLayout x:Name="slContent" Spacing="0" Padding="0,35,0,0">
                 <!--CONTENT WILL BE PLACED AT RUNTIME-->
             </StackLayout>
-            <StackLayout Margin="10">
-                <Button Text="Cancel" Clicked="Cancel_Clicked"/>
-                <Button Text="OK" Clicked="Confirm_Clicked" />
+            <StackLayout Margin="10" Orientation="Horizontal">
+                <Button Text="OK" Clicked="Confirm_Clicked" HorizontalOptions="FillAndExpand" />
+                <Button Text="Cancel" Clicked="Cancel_Clicked" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
 
         </StackLayout>
