@@ -9,9 +9,7 @@
         <Button Text="ChooseCheckBoxes..." Clicked="InputCheckBox_Clicked"/>
         <Button Text="ChooseRadioButtons..." Clicked="InputRadioButton_Clicked"/>
 
-
-        
     </StackLayout>
-    
+
 
 </ContentPage>

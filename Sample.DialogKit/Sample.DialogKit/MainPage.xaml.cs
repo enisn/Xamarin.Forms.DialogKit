@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Sample.DialogKit
@@ -39,4 +40,5 @@ namespace Sample.DialogKit
             var result = await Plugin.DialogKit.CrossDiaglogKit.Current.GetRadioButtonResultAsync("Başlık", "Choose some", "Option 1", "Option 2", "Option 3", "Option 4");
         }
     }
+
 }

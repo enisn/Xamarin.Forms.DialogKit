@@ -64,7 +64,22 @@ namespace Plugin.DialogKit.Shared
         {
             var tcs = new TaskCompletionSource<string>();
             var _dialogView = new Plugin.DialogKit.Views.RadioButtonView(title,message,options);
-            _dialogView.Completed += (s, e) => { tcs.SetResult(_dialogView.SelectedOption); PopupNavigation.PopAsync(); };
+            _dialogView.Completed += (s, e) => { tcs.SetResult(_dialogView.SelectedText); PopupNavigation.PopAsync(); };
+            PopupNavigation.PushAsync(new PopupPage { Content = _dialogView });
+            return tcs.Task;
+        }
+        /// <summary>
+        /// Pushes a pop-up page which includes radio buttons for selection
+        /// </summary>
+        /// <param name="title">Title to be shown to user</param>
+        /// <param name="message">Message to be shown to user</param>
+        /// <param name="selectionSource">Ask options from a Collection</param>
+        /// <param name="displayMember">Which property will be shown of object in collection</param>
+        public Task<T> GetRadioButtonResultAsync<T>(string title, string message, IEnumerable<T> selectionSource, string displayMember)
+        {
+            var tcs = new TaskCompletionSource<T>();
+            var _dialogView = new Plugin.DialogKit.Views.RadioButtonView(title,message, (IEnumerable<object>)selectionSource, displayMember);
+            _dialogView.Completed += (s, e) => { tcs.SetResult((T)_dialogView.SelectecItem); PopupNavigation.PopAsync(); };
             PopupNavigation.PushAsync(new PopupPage { Content = _dialogView });
             return tcs.Task;
         }
