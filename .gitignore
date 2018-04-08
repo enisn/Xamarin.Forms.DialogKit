@@ -14,3 +14,5 @@
 /.vs/DialogKit/v15
 /DiaglogKit/bin/Debug
 /Sample.DialogKit/Sample.DialogKit.iOS/bin/iPhoneSimulator/Release
+/DiaglogKit/Properties/PublishProfiles
+/Sample.DialogKit/Sample.DialogKit.iOS/bin/iPhone/Debug

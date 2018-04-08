@@ -25,6 +25,7 @@ namespace Sample.DialogKit
         }
         private async void InputText_Clicked(object sender, EventArgs e)
         {
+
             var result = await Plugin.DialogKit.CrossDiaglogKit.Current.GetInputTextAsync("New Title", "Type something:");
             if (result != null)
             {
@@ -33,6 +34,7 @@ namespace Sample.DialogKit
         }
         private async void InputCheckBox_Clicked(object sender, EventArgs e)
         {
+            
             var result = await Plugin.DialogKit.CrossDiaglogKit.Current.GetCheckboxResultAsync("Başlık", "Choose some", "Option 1", "Option 2");
         }
         private async void InputRadioButton_Clicked(object sender, EventArgs e)

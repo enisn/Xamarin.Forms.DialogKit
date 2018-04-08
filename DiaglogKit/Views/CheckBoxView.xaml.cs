@@ -64,7 +64,7 @@ namespace Plugin.DialogKit.Views
             foreach (var item in slContent.Children)
                 if (item is Checkbox)
                     if ((item as Checkbox).IsChecked)
-                        selectedValues.Add((item as Checkbox).Value);
+                        selectedValues.Add((item as Checkbox).Text);
 
             return selectedValues;
         }
@@ -76,11 +76,9 @@ namespace Plugin.DialogKit.Views
         BoxView boxBackground = new BoxView { HeightRequest = 40, WidthRequest = 40, BackgroundColor = Color.LightGray };
         BoxView boxSelected = new BoxView { IsVisible = false, HeightRequest = 25, WidthRequest = 25, BackgroundColor = Color.Accent, VerticalOptions = LayoutOptions.CenterAndExpand, HorizontalOptions = LayoutOptions.Center };
         Label lblOption = new Label { VerticalOptions = LayoutOptions.CenterAndExpand };
-        public Checkbox(string optionName,int key)
-        {
-            Key = key;
-            lblOption.Text = optionName;
 
+        public Checkbox()
+        {
             this.Orientation = StackOrientation.Horizontal;
             this.Margin = new Thickness(10, 0);
             this.Padding = new Thickness(10);
@@ -89,18 +87,22 @@ namespace Plugin.DialogKit.Views
             this.Children.Add(lblOption);
             this.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(()=> { IsChecked = !IsChecked; }),
+                Command = new Command(() => { IsChecked = !IsChecked; }),
             });
         }
+        public Checkbox(string optionName,int key) : this()
+        {
+            Key = key;
+            lblOption.Text = optionName;
+        }
         public int Key { get; set; }
-        public string Value { get => lblOption.Text; set => lblOption.Text = value; }
+        public string Text { get => lblOption.Text; set => lblOption.Text = value; }
         public bool IsChecked { get => boxSelected.IsVisible; set => boxSelected.IsVisible = value; }
         public Color Color { get => boxSelected.BackgroundColor; set => boxSelected.BackgroundColor = value; }
         public static readonly BindableProperty ColorProperty = BindableProperty.Create(nameof(Color), typeof(Color), typeof(Checkbox), Color.Accent, propertyChanged: (bo, ov, nv) => (bo as Checkbox).Color = (Color)nv);
         public static readonly BindableProperty IsCheckedProperty = BindableProperty.Create(nameof(IsChecked), typeof(bool), typeof(Checkbox), false, propertyChanged: (bo, ov, nv) => (bo as Checkbox).IsChecked = (bool)nv);
         public static readonly BindableProperty KeyProperty = BindableProperty.Create(nameof(Key), typeof(int), typeof(Checkbox), 0, propertyChanged: (bo, ov, nv) => (bo as Checkbox).Key = (int)nv);
-        public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value),typeof(string),typeof(Checkbox),"",propertyChanged:(bo,ov,nv)=>(bo as Checkbox).Value = (string)nv);
-
+        public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text),typeof(string),typeof(Checkbox),"",propertyChanged:(bo,ov,nv)=>(bo as Checkbox).Text = (string)nv);
 
     }
 }
