@@ -6,12 +6,13 @@
         <StackLayout Padding="10" BackgroundColor="White" VerticalOptions="CenterAndExpand" Margin="25">
             <Label FontAttributes="Bold" FontSize="Large" Text="{Binding Title}"/>
             <Label FontSize="Large" Text="{Binding Message}"/>
-            <StackLayout Spacing="12">
+            <StackLayout x:Name="slContent" Spacing="12">
+                <!--CONTENT WILL BE PLACED AT RUNTIME-->
             </StackLayout>
             
             <StackLayout Orientation="Horizontal">
-                <!--<Button Text="OK" Clicked="Confirm_Clicked" />
-                <Button Text="Cancel" Clicked="Cancel_Clicked"/>-->
+                <Button Text="OK" Clicked="Confirm_Clicked" />
+                <Button Text="Cancel" Clicked="Cancel_Clicked"/>
             </StackLayout>
         </StackLayout>
     </ContentView.Content>

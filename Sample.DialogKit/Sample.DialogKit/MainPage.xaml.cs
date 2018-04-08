@@ -34,6 +34,9 @@ namespace Sample.DialogKit
         {
             var result = await Plugin.DialogKit.CrossDiaglogKit.Current.GetCheckboxResultAsync("Başlık", "Choose some", "Option 1", "Option 2");
         }
-
+        private async void InputRadioButton_Clicked(object sender, EventArgs e)
+        {
+            var result = await Plugin.DialogKit.CrossDiaglogKit.Current.GetRadioButtonResultAsync("Başlık", "Choose some", "Option 1", "Option 2", "Option 3", "Option 4");
+        }
     }
 }

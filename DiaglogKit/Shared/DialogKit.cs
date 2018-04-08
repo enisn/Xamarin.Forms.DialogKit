@@ -59,5 +59,14 @@ namespace Plugin.DialogKit.Shared
 
             return tcs.Task;
         }
+
+        public Task<string> GetRadioButtonResultAsync(string title,string message,params string[] options)
+        {
+            var tcs = new TaskCompletionSource<string>();
+            var _dialogView = new Plugin.DialogKit.Views.RadioButtonView(title,message,options);
+            _dialogView.Completed += (s, e) => { tcs.SetResult(_dialogView.SelectedOption); PopupNavigation.PopAsync(); };
+            PopupNavigation.PushAsync(new PopupPage { Content = _dialogView });
+            return tcs.Task;
+        }
     }
 }

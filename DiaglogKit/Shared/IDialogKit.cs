@@ -24,11 +24,13 @@ namespace Plugin.DialogKit.Shared
         /// <summary>
         /// Checkbox group
         /// </summary>
-        /// <param name="title"></param>
-        /// <param name="message"></param>
-        /// <param name="options"></param>
         /// <returns></returns>
         Task<string[]> GetCheckboxResultAsync(string title, string message, params string[] options);
         Task<int[]> GetCheckboxResultAsync(string title, string message, Dictionary<int, string> options);
+        /// <summary>
+        /// Gets Radio buttons result
+        /// </summary>
+        /// <returns></returns>
+        Task<string> GetRadioButtonResultAsync(string title, string message, params string[] options);
     }
 }
