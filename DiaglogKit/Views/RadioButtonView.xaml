@@ -10,10 +10,10 @@
             <views:RadioButtonGroupView x:Name="slContent" Spacing="12">
                 <!--CONTENT WILL BE PLACED AT RUNTIME-->
             </views:RadioButtonGroupView>
-            
-            <StackLayout Orientation="Horizontal">
-                <Button Text="OK" Clicked="Confirm_Clicked" />
-                <Button Text="Cancel" Clicked="Cancel_Clicked"/>
+
+            <StackLayout Margin="10" Orientation="Horizontal">
+                <Button Text="OK" Clicked="Confirm_Clicked" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Cancel" Clicked="Cancel_Clicked" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
         </StackLayout>
     </ContentView.Content>

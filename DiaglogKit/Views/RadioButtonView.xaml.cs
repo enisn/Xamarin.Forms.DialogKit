@@ -160,12 +160,14 @@ namespace Plugin.DialogKit.Views
 
     public class RadioButton : StackLayout
     {
-        Label lblEmpty = new Label { TextColor = Color.Gray, Text = "◯", FontSize = 40, HorizontalTextAlignment = TextAlignment.Center };
-        Label lblFilled = new Label { TextColor = Color.Accent, Text = "●", FontSize = 40, IsVisible = false, Scale = 0.9, VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.Center };
-        Label lblText = new Label { Text = "", FontSize = 30, VerticalTextAlignment = TextAlignment.Center, VerticalOptions = LayoutOptions.CenterAndExpand };
+        Label lblEmpty = new Label { TextColor = Color.Gray, Text = "◯", HorizontalTextAlignment = TextAlignment.Center };
+        Label lblFilled = new Label { TextColor = Color.Accent, Text = "●", IsVisible = false, Scale = 0.9, VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.Center };
+        Label lblText = new Label { Text = "", VerticalTextAlignment = TextAlignment.Center, VerticalOptions = LayoutOptions.CenterAndExpand };
 
         public RadioButton()
         {
+            lblEmpty.FontSize = lblText.FontSize * 1.3;
+            lblFilled.FontSize = lblText.FontSize * 1.3;
             Orientation = StackOrientation.Horizontal;
             this.Children.Add(new Grid
             {

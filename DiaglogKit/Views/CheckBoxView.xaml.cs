@@ -35,7 +35,7 @@ namespace Plugin.DialogKit.Views
         }
         private void Cancel_Clicked(object sender, EventArgs e)
         {
-
+            Completed?.Invoke(this, null);
         }
         public static readonly BindableProperty SelectedKeysProperty = BindableProperty.Create(nameof(SelectedKeys), typeof(IList<int>), typeof(CheckBoxView), new[] { 0 }, propertyChanged: (bo, ov, nv) => (bo as CheckBoxView).SelectedKeys = (IList<int>)nv);
         public IList<int> SelectedKeys { get => GetSelectedKeys(); set => UpdateSelectedKeys(value); }

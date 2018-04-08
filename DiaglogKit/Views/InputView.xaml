@@ -7,6 +7,10 @@
             <Label FontAttributes="Bold" FontSize="Large" Text="{Binding Title}"/>
             <Label FontSize="Large" Text="{Binding Message}"/>
             <Entry x:Name="txtInput" Keyboard="{Binding Keyboard}"/>
+            <StackLayout Margin="10" Orientation="Horizontal">
+                <Button Text="OK" Clicked="Confirm_Clicked" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Cancel" Clicked="Cancel_Clicked" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
         </StackLayout>
   </ContentView.Content>
 </ContentView>

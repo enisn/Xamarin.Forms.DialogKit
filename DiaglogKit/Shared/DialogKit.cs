@@ -21,7 +21,7 @@ namespace Plugin.DialogKit.Shared
 
             if (colors == null || colors.Length == 0) colors = defaultColors;
             var _dialogView = new ColorPickerView(title, message, colors);
-            _dialogView.Picked += (s, e) => { cts.SetResult(_dialogView.CurrentColor); PopupNavigation.PopAsync(); };
+            _dialogView.Picked += (s, e) => { cts.SetResult(e); PopupNavigation.PopAsync(); };
             PopupNavigation.PushAsync(new Rg.Plugins.Popup.Pages.PopupPage
             {
                 Content = _dialogView
@@ -45,7 +45,7 @@ namespace Plugin.DialogKit.Shared
         {
             var tcs = new TaskCompletionSource<string[]>();
             var _dialogView = new Plugin.DialogKit.Views.CheckBoxView(title, message, options);
-            _dialogView.Completed += (s, e) => { tcs.SetResult(_dialogView.SelectedValues.ToArray()); PopupNavigation.PopAsync(); };
+            _dialogView.Completed += (s, e) => { tcs.SetResult(e == null ? null : _dialogView.SelectedValues.ToArray()); PopupNavigation.PopAsync(); };
             PopupNavigation.PushAsync(new PopupPage { Content = _dialogView });
 
             return tcs.Task;
@@ -54,7 +54,7 @@ namespace Plugin.DialogKit.Shared
         {
             var tcs = new TaskCompletionSource<int[]>();
             var _dialogView = new Plugin.DialogKit.Views.CheckBoxView(title, message, options);
-            _dialogView.Completed += (s, e) => { tcs.SetResult(_dialogView.SelectedKeys.ToArray()); PopupNavigation.PopAsync(); };
+            _dialogView.Completed += (s, e) => { tcs.SetResult(e?.ToArray()); PopupNavigation.PopAsync(); };
             PopupNavigation.PushAsync(new PopupPage { Content = _dialogView });
 
             return tcs.Task;

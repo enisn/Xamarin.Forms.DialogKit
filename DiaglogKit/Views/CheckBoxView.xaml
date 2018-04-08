@@ -10,7 +10,7 @@
                 <!--CONTENT WILL BE PLACED AT RUNTIME-->
             </StackLayout>
             <StackLayout Margin="10" Orientation="Horizontal">
-                <Button Text="OK" Clicked="Confirm_Clicked" HorizontalOptions="FillAndExpand" />
+                <Button Text="OK" Clicked="Confirm_Clicked" HorizontalOptions="FillAndExpand"/>
                 <Button Text="Cancel" Clicked="Cancel_Clicked" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
 

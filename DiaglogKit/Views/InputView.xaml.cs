@@ -24,11 +24,11 @@ namespace Plugin.DialogKit.Views
         {
             txtInput.Focus();
         }
-        public void Confirm_Clicked(object sender, EventArgs e)
+        private void Confirm_Clicked(object sender, EventArgs e)
         {
             Picked?.Invoke(this, txtInput.Text);
         }
-        public void Cancel_Clicked(object sender, EventArgs e)
+        private void Cancel_Clicked(object sender, EventArgs e)
         {
             Picked?.Invoke(this, null);
         }
