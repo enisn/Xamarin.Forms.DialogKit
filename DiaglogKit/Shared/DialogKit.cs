@@ -14,7 +14,6 @@ namespace Plugin.DialogKit.Shared
     public class DialogKit : IDialogKit
     {
         static readonly Color[] defaultColors = { Color.Blue, Color.Green, Color.Red, Color.Yellow, Color.Orange, Color.Purple, Color.Brown };
-
         public Task<Color?> GetColorAsync(string title, string message, params Color[] colors)
         {
             var cts = new TaskCompletionSource<Color?>();
@@ -29,7 +28,6 @@ namespace Plugin.DialogKit.Shared
 
             return cts.Task;
         }
-
         public Task<string> GetInputTextAsync(string title, string message, Keyboard keyboard = null)
         {
            
@@ -59,7 +57,6 @@ namespace Plugin.DialogKit.Shared
 
             return tcs.Task;
         }
-
         public Task<string> GetRadioButtonResultAsync(string title,string message,params string[] options)
         {
             var tcs = new TaskCompletionSource<string>();

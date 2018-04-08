@@ -166,6 +166,8 @@ namespace Plugin.DialogKit.Views
 
         public RadioButton()
         {
+            if (Device.RuntimePlatform != Device.iOS)
+                lblText.FontSize = lblText.FontSize *= 1.5;
             lblEmpty.FontSize = lblText.FontSize * 1.3;
             lblFilled.FontSize = lblText.FontSize * 1.3;
             Orientation = StackOrientation.Horizontal;
