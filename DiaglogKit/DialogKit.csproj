@@ -10,8 +10,8 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
     <Version>1.0.0</Version>
-    <PackageVersion>1.0.1.0</PackageVersion>
-    <PackOnBuild>false</PackOnBuild>
+    <PackageVersion>0.3.1.0</PackageVersion>
+    <PackOnBuild>true</PackOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
     <LangVersion>default</LangVersion>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD2_0</DefineConstants>
@@ -29,7 +29,7 @@
     <PackageTags>xamarin,ios, android, xamarin.forms, plugin, DiaglogKit, Popup, ColorPicker, Input Dialog,Dialog, Color Dialog</PackageTags>
     
     <Title>Xamarin Forms Dialog Kit</Title>
-    <Summary>Quick dialogs to get input from users</Summary>
+    <Summary>Updated Radio Buttons Quick dialogs to get input from users</Summary>
     <Description>Get easily different type inputs from users</Description>
 
     <Owners>Enis Necipoğlu</Owners>
@@ -53,16 +53,10 @@
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
-    <!--<PackageReference Include="Rg.Plugins.Popup" Version="1.0.4" />-->
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.0.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="Shared\DialogKit.cs" />
-    <None Remove="Shared\IDialogKit.cs" />
-    <None Remove="Views\CheckBoxView.xaml.cs" />
-    <None Remove="Views\InputView.xaml.cs" />
-    <None Remove="Views\RadioButtonView.xaml.cs" />
-  </ItemGroup>
+
 
   <ItemGroup>
     <EmbeddedResource Update="Views\CheckBoxView.xaml">

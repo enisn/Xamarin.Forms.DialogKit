@@ -17,7 +17,7 @@ namespace Plugin.DialogKit.Views
             InitializeComponent();
             this.BindingContext = new { Title = title, Message = message };
             for (int i = 0; i < options.Length; i++)
-                slContent.Children.Add(new Checkbox(options[i],i));
+                slContent.Children.Add(new CheckBox(options[i],i));
         }
 
         public CheckBoxView(string title,string message,Dictionary<int,string> keyValues)
@@ -25,7 +25,7 @@ namespace Plugin.DialogKit.Views
             InitializeComponent();
             this.BindingContext = new { Title = title, Message = message };
             foreach (var item in keyValues)
-                slContent.Children.Add(new Checkbox(item.Value,item.Key));
+                slContent.Children.Add(new CheckBox(item.Value,item.Key));
         }
         public event EventHandler<IList<int>> Completed;
 
@@ -44,9 +44,9 @@ namespace Plugin.DialogKit.Views
         {
             List<int> selectedKeys = new List<int>();
             foreach (var item in slContent.Children)
-                if (item is Checkbox)
-                    if ((item as Checkbox).IsChecked)
-                        selectedKeys.Add((item as Checkbox).Key);
+                if (item is CheckBox)
+                    if ((item as CheckBox).IsChecked)
+                        selectedKeys.Add((item as CheckBox).Key);
 
             return selectedKeys;
         }
@@ -54,30 +54,30 @@ namespace Plugin.DialogKit.Views
         {
             foreach (var item in slContent.Children)
             {
-                if (item is Checkbox)
-                    (item as Checkbox).IsChecked = keys.Contains((item as Checkbox).Key);
+                if (item is CheckBox)
+                    (item as CheckBox).IsChecked = keys.Contains((item as CheckBox).Key);
             }
         }
         public IList<string> GetSelectedValues()
         {
             List<string> selectedValues = new List<string>();
             foreach (var item in slContent.Children)
-                if (item is Checkbox)
-                    if ((item as Checkbox).IsChecked)
-                        selectedValues.Add((item as Checkbox).Text);
+                if (item is CheckBox)
+                    if ((item as CheckBox).IsChecked)
+                        selectedValues.Add((item as CheckBox).Text);
 
             return selectedValues;
         }
 
     }
 
-    public class Checkbox : StackLayout
+    public class CheckBox : StackLayout
     {
         BoxView boxBackground = new BoxView { HeightRequest = 40, WidthRequest = 40, BackgroundColor = Color.LightGray };
         BoxView boxSelected = new BoxView { IsVisible = false, HeightRequest = 25, WidthRequest = 25, BackgroundColor = Color.Accent, VerticalOptions = LayoutOptions.CenterAndExpand, HorizontalOptions = LayoutOptions.Center };
         Label lblOption = new Label { VerticalOptions = LayoutOptions.CenterAndExpand };
 
-        public Checkbox()
+        public CheckBox()
         {
             this.Orientation = StackOrientation.Horizontal;
             this.Margin = new Thickness(10, 0);
@@ -90,7 +90,7 @@ namespace Plugin.DialogKit.Views
                 Command = new Command(() => { IsChecked = !IsChecked; }),
             });
         }
-        public Checkbox(string optionName,int key) : this()
+        public CheckBox(string optionName,int key) : this()
         {
             Key = key;
             lblOption.Text = optionName;
@@ -99,10 +99,10 @@ namespace Plugin.DialogKit.Views
         public string Text { get => lblOption.Text; set => lblOption.Text = value; }
         public bool IsChecked { get => boxSelected.IsVisible; set => boxSelected.IsVisible = value; }
         public Color Color { get => boxSelected.BackgroundColor; set => boxSelected.BackgroundColor = value; }
-        public static readonly BindableProperty ColorProperty = BindableProperty.Create(nameof(Color), typeof(Color), typeof(Checkbox), Color.Accent, propertyChanged: (bo, ov, nv) => (bo as Checkbox).Color = (Color)nv);
-        public static readonly BindableProperty IsCheckedProperty = BindableProperty.Create(nameof(IsChecked), typeof(bool), typeof(Checkbox), false, propertyChanged: (bo, ov, nv) => (bo as Checkbox).IsChecked = (bool)nv);
-        public static readonly BindableProperty KeyProperty = BindableProperty.Create(nameof(Key), typeof(int), typeof(Checkbox), 0, propertyChanged: (bo, ov, nv) => (bo as Checkbox).Key = (int)nv);
-        public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text),typeof(string),typeof(Checkbox),"",propertyChanged:(bo,ov,nv)=>(bo as Checkbox).Text = (string)nv);
+        public static readonly BindableProperty ColorProperty = BindableProperty.Create(nameof(Color), typeof(Color), typeof(CheckBox), Color.Accent, propertyChanged: (bo, ov, nv) => (bo as CheckBox).Color = (Color)nv);
+        public static readonly BindableProperty IsCheckedProperty = BindableProperty.Create(nameof(IsChecked), typeof(bool), typeof(CheckBox), false, propertyChanged: (bo, ov, nv) => (bo as CheckBox).IsChecked = (bool)nv);
+        public static readonly BindableProperty KeyProperty = BindableProperty.Create(nameof(Key), typeof(int), typeof(CheckBox), 0, propertyChanged: (bo, ov, nv) => (bo as CheckBox).Key = (int)nv);
+        public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text),typeof(string),typeof(CheckBox),"",propertyChanged:(bo,ov,nv)=>(bo as CheckBox).Text = (string)nv);
 
     }
 }
