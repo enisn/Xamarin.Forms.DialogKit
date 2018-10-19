@@ -15,13 +15,23 @@ namespace Plugin.DialogKit.Views
         public ColorPickerView(string title, string message, params Color[] colors)
         {
             InitializeComponent();
-            this.BindingContext = new { Title = title, Message = message };
+            BindTexts(title, message);
             foreach (var item in colors)
             {
                 var colorView = new ColorView(item) { Margin = new Thickness(slColors.Children.Count > 0 ? -40 : 0, 0, 0, 0) };
                 colorView.Picked += ColorView_Picked;
                 slColors.Children.Add(colorView);
             }
+        }
+        private void BindTexts(string title, string message)
+        {
+            this.BindingContext = new
+            {
+                Title = title,
+                Message = message,
+                OK = CrossDiaglogKit.GlobalSettings.DialogAffirmative,
+                Cancel = CrossDiaglogKit.GlobalSettings.DialogNegative,
+            };
         }
         public Color CurrentColor { get; set; }
         public event EventHandler<Color?> Picked;
@@ -35,6 +45,7 @@ namespace Plugin.DialogKit.Views
                     (item as ColorView).Raised = item == sender;
             }
         }
+    
 
         public void Confirm_Clicked(object sender, EventArgs e)
         {

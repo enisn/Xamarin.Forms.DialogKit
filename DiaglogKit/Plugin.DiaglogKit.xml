@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Plugin.DiaglogKit</name>
+    </assembly>
+    <members>
+        <member name="T:Plugin.DialogKit.CrossDiaglogKit">
+            <summary>
+            Cross DiaglogKit
+            </summary>
+        </member>
+        <member name="P:Plugin.DialogKit.CrossDiaglogKit.IsSupported">
+            <summary>
+            Gets if the plugin is supported on the current platform.
+            </summary>
+        </member>
+        <member name="P:Plugin.DialogKit.CrossDiaglogKit.Current">
+            <summary>
+            Current plugin implementation to use
+            </summary>
+        </member>
+        <member name="M:Plugin.DialogKit.Shared.DialogKit.GetRadioButtonResultAsync``1(System.String,System.String,System.Collections.Generic.IEnumerable{``0},``0,System.String)">
+            <summary>
+            Pushes a pop-up page which includes radio buttons for selection
+            </summary>
+            <param name="title">Title to be shown to user</param>
+            <param name="message">Message to be shown to user</param>
+            <param name="selectionSource">Ask options from a Collection</param>
+            <param name="displayMember">Which property will be shown of object in collection</param>
+        </member>
+        <member name="M:Plugin.DialogKit.Shared.IDialogKit.GetColorAsync(System.String,System.String,Xamarin.Forms.Color[])">
+            <summary>
+            To get color input from user
+            </summary>
+            <param name="title">Title will be shown top of dialog box</param>
+            <param name="message">A message about input</param>
+            <param name="colors">You can send custom colors to pick as available</param>
+            <returns></returns>
+        </member>
+        <member name="M:Plugin.DialogKit.Shared.IDialogKit.GetInputTextAsync(System.String,System.String,System.String,Xamarin.Forms.Keyboard)">
+            ---------------------------------------------------------------------------------------------
+             <summary>
+             Just quick get an Text input
+             </summary>
+             <param name="title">Title will be shown top of dialog box</param>
+             <param name="message">A message about input</param>
+             <param name="currentText">You can open dialog with filled Text of Entry</param>
+             <param name="keyboard">You can set the keyboard for this input</param>
+        </member>
+        <member name="M:Plugin.DialogKit.Shared.IDialogKit.GetCheckboxResultAsync(System.String,System.String,System.String[])">
+            ---------------------------------------------------------------------------------------------
+             <summary>
+             Checkbox group
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Plugin.DialogKit.Shared.IDialogKit.GetCheckboxResultAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.Int32,System.String})">
+            ---------------------------------------------------------------------------------------------
+             <summary>
+             Checkbox group. Returns values of your defination from dictionary
+             </summary>
+             <param name="title">Title to be shown to user</param>
+             <param name="message">Message to be shown to user</param>
+             <param name="options">Optins to ask to user</param>
+             <returns></returns>
+        </member>
+        <member name="M:Plugin.DialogKit.Shared.IDialogKit.GetRadioButtonResultAsync(System.String,System.String,System.String[])">
+            ---------------------------------------------------------------------------------------------
+             <summary>
+             Gets Radio buttons result
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Plugin.DialogKit.Shared.IDialogKit.GetRadioButtonResultAsync``1(System.String,System.String,System.Collections.Generic.IEnumerable{``0},``0,System.String)">
+            ---------------------------------------------------------------------------------------------
+             <summary>
+             Pushes a pop-up page which includes radio buttons for selection
+             </summary>
+             <param name="title">Title to be shown to user</param>
+             <param name="message">Message to be shown to user</param>
+             <param name="selectionSource">Ask options from a Collection</param>
+             <param name="displayMember">Which property will be shown of object in collection</param>
+        </member>
+    </members>
+</doc>

@@ -5,7 +5,7 @@
     <id>Xamarin.Forms.DialogKit</id>
 
     <!-- The package version number that is used when resolving dependencies -->
-    <version>1.1.0</version>
+    <version>1.5.0</version>
 
     <!-- Authors contain text that appears directly on the gallery -->
     <authors>Enis Necipoglu</authors>
@@ -35,6 +35,11 @@
 
     <description>
       Getting quick input from users easy now with 1 line code:
+	  1. Install and set-up Rg.Plugins.Popup
+	  2. Install Xamarin.Forms.InputKit
+	  3. Install Xamarin.Forms.DiaglogKit
+	  
+	  then you can use methods like:
 	  
 	  var result = await Plugin.DialogKit.CrossDiaglogKit.Current.GetInputTextAsync("New Title", "Type something:");
 	  
@@ -49,7 +54,9 @@
 
     <!-- Dependencies are automatically installed when the package is installed -->
     <dependencies>
+	   <dependency id="Xamarin.Forms" version="3.1.0.697729" />
 	   <dependency id="Rg.Plugins.Popup" version="1.0.4" />
+	   <dependency id="Xamarin.Forms.InputKit" version="2.1.0" />
     </dependencies>
   </metadata>
 

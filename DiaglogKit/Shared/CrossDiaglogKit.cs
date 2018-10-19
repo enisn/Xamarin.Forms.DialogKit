@@ -1,4 +1,5 @@
 ﻿
+using Plugin.DiaglogKit.Shared;
 using Plugin.DialogKit.Shared;
 using System;
 
@@ -29,7 +30,7 @@ namespace Plugin.DialogKit
                 return _current;
             }
         }
-
+        public static GlobalSetting GlobalSettings { get; private set; } = new GlobalSetting();
         static IDialogKit CreateDiaglogKit()
         {
 #if NETSTANDARD1_0 || NETSTANDARD2_0

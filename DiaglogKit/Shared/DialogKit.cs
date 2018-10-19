@@ -28,12 +28,12 @@ namespace Plugin.DialogKit.Shared
 
             return cts.Task;
         }
-        public Task<string> GetInputTextAsync(string title, string message, Keyboard keyboard = null)
+        public Task<string> GetInputTextAsync(string title, string message,string currentText = null, Keyboard keyboard = null)
         {
            
             if (keyboard == null) keyboard = Keyboard.Default;
             var cts = new TaskCompletionSource<string>();
-            var _dialogView = new Plugin.DialogKit.Views.InputView(title, message);
+            var _dialogView = new Plugin.DialogKit.Views.InputView(title, message,currentText,keyboard);
             _dialogView.FocusEntry();
             _dialogView.Picked += (s, o) => { cts.SetResult(o); PopupNavigation.PopAsync(); };
             PopupNavigation.PushAsync(new PopupPage { Content = _dialogView });
@@ -57,6 +57,15 @@ namespace Plugin.DialogKit.Shared
 
             return tcs.Task;
         }
+        public Task<IEnumerable<T>> GetCheckboxResultAsync<T>(string title, string message, IList<T> source, IList<T> selecteds = null)
+        {
+            TaskCompletionSource<IEnumerable<T>> tcs = new TaskCompletionSource<IEnumerable<T>>();
+
+            var _dialogView = new Plugin.DialogKit.Views.CheckBoxView(title, message, source, selecteds.AsEnumerable());
+            _dialogView.Completed += (s, e) => { tcs.TrySetResult((s as CheckBoxView).GetSelectedValues().Cast<T>());  PopupNavigation.PopAsync(); };
+            PopupNavigation.PushAsync(new PopupPage { Content = _dialogView });
+            return tcs.Task;
+        } 
         public Task<string> GetRadioButtonResultAsync(string title,string message,params string[] options)
         {
             var tcs = new TaskCompletionSource<string>();
@@ -72,10 +81,10 @@ namespace Plugin.DialogKit.Shared
         /// <param name="message">Message to be shown to user</param>
         /// <param name="selectionSource">Ask options from a Collection</param>
         /// <param name="displayMember">Which property will be shown of object in collection</param>
-        public Task<T> GetRadioButtonResultAsync<T>(string title, string message, IEnumerable<T> selectionSource, string displayMember)
+        public Task<T> GetRadioButtonResultAsync<T>(string title, string message, IEnumerable<T> selectionSource,T selected = default(T), string displayMember = null)
         {
             var tcs = new TaskCompletionSource<T>();
-            var _dialogView = new Plugin.DialogKit.Views.RadioButtonView(title,message, (IEnumerable<object>)selectionSource, displayMember);
+            var _dialogView = new Plugin.DialogKit.Views.RadioButtonView(title,message, (IEnumerable<object>)selectionSource,selected, displayMember);
             _dialogView.Completed += (s, e) => { tcs.SetResult((T)_dialogView.SelectecItem); PopupNavigation.PopAsync(); };
             PopupNavigation.PushAsync(new PopupPage { Content = _dialogView });
             return tcs.Task;

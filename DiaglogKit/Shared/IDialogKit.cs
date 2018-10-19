@@ -20,8 +20,9 @@ namespace Plugin.DialogKit.Shared
         /// </summary>
         /// <param name="title">Title will be shown top of dialog box</param>
         /// <param name="message">A message about input</param>
+        /// <param name="currentText">You can open dialog with filled Text of Entry</param>
         /// <param name="keyboard">You can set the keyboard for this input</param>
-        Task<string> GetInputTextAsync(string title, string message, Keyboard keyboard = null);
+        Task<string> GetInputTextAsync(string title, string message, string currentText = null, Keyboard keyboard = null);
         ///---------------------------------------------------------------------------------------------
         /// <summary>
         /// Checkbox group
@@ -37,6 +38,7 @@ namespace Plugin.DialogKit.Shared
         /// <param name="options">Optins to ask to user</param>
         /// <returns></returns>
         Task<int[]> GetCheckboxResultAsync(string title, string message, Dictionary<int, string> options);
+        Task<IEnumerable<T>> GetCheckboxResultAsync<T>(string title, string message, IList<T> source, IList<T> selecteds = null);
         ///---------------------------------------------------------------------------------------------
         /// <summary>
         /// Gets Radio buttons result
@@ -51,7 +53,7 @@ namespace Plugin.DialogKit.Shared
         /// <param name="message">Message to be shown to user</param>
         /// <param name="selectionSource">Ask options from a Collection</param>
         /// <param name="displayMember">Which property will be shown of object in collection</param>
-        Task<T> GetRadioButtonResultAsync<T>(string title, string message, IEnumerable<T> selectionSource, string displayMember);
+        Task<T> GetRadioButtonResultAsync<T>(string title, string message, IEnumerable<T> selectionSource, T selected = default(T), string displayMember = null);
 
     }
 }

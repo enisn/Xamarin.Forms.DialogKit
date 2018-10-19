@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.InputKit.Shared.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,23 +19,31 @@ namespace Plugin.DialogKit.Views
         }
         public RadioButtonView(string title, string message, string[] options) : this()
         {
-            this.BindingContext = new { Title = title, Message = message };
-
+            BindTexts(title, message);
             for (int i = 0; i < options.Length; i++)
             {
                 slContent.Children.Add(new RadioButton(options[i], i == 0));
             }
         }
 
-        public RadioButtonView(string title,string message,IEnumerable<object> values, string displayMember)
+        public RadioButtonView(string title,string message,IEnumerable<object> values,object selected, string displayMember)
         {
-            this.BindingContext = new { Title = title, Message = message };
+            BindTexts(title, message);
             foreach (var item in values)
             {
-                slContent.Children.Add(new RadioButton(item, displayMember));
+                slContent.Children.Add(new RadioButton(item,displayMember, item == selected));
             }
         }
-
+        private void BindTexts(string title, string message)
+        {
+            this.BindingContext = new
+            {
+                Title = title,
+                Message = message,
+                OK = CrossDiaglogKit.GlobalSettings.DialogAffirmative,
+                Cancel = CrossDiaglogKit.GlobalSettings.DialogNegative,
+            };
+        }
         public event EventHandler Completed;
         public string SelectedText
         {
@@ -155,64 +164,6 @@ namespace Plugin.DialogKit.Views
                         (item as RadioButton).IsChecked = item == value;
                 }
             }
-        }
-    }
-
-    public class RadioButton : StackLayout
-    {
-        Label lblEmpty = new Label { TextColor = Color.Gray, Text = "◯", HorizontalTextAlignment = TextAlignment.Center };
-        Label lblFilled = new Label { TextColor = Color.Accent, Text = "●", IsVisible = false, Scale = 0.9, VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.Center };
-        Label lblText = new Label { Text = "", VerticalTextAlignment = TextAlignment.Center, VerticalOptions = LayoutOptions.CenterAndExpand };
-
-        public RadioButton()
-        {
-            if (Device.RuntimePlatform != Device.iOS)
-                lblText.FontSize = lblText.FontSize *= 1.5;
-            lblEmpty.FontSize = lblText.FontSize * 1.3;
-            lblFilled.FontSize = lblText.FontSize * 1.3;
-            Orientation = StackOrientation.Horizontal;
-            this.Children.Add(new Grid
-            {
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Children =
-                {
-                    lblEmpty,
-                    lblFilled
-                }
-            });
-            this.Children.Add(lblText);
-            this.GestureRecognizers.Add(new TapGestureRecognizer { Command = new Command(Tapped) });
-        }
-        public RadioButton(object value, string displayMember) : this()
-        {
-            this.Value = value;
-            var text = value.GetType().GetProperty(displayMember)?.GetValue(value).ToString();
-            lblText.Text = text ?? " ";
-        }
-
-        public RadioButton(string text, bool isChecked = false) : this()
-        {
-            Value = text;
-            lblText.Text = text;
-            this.IsChecked = isChecked;
-        }
-
-        public event EventHandler Clicked;
-        public ICommand ClickCommand { get; set; }
-        public object Value { get; set; }
-        public bool IsChecked { get => lblFilled.IsVisible; set => lblFilled.IsVisible = value; }
-        public string Text { get => lblText.Text; set => lblText.Text = value; }
-        public double FontSize { get => lblText.FontSize; set { lblText.FontSize = value; lblFilled.FontSize = value * 1.3; lblEmpty.FontSize = value * 1.3; } }
-
-        public static readonly BindableProperty IsCheckedProperty = BindableProperty.Create(nameof(IsChecked), typeof(bool), typeof(RadioButton), false, propertyChanged: (bo, ov, nv) => (bo as RadioButton).IsChecked = (bool)nv);
-        public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(RadioButton), "", propertyChanged: (bo, ov, nv) => (bo as RadioButton).Text = (string)nv);
-        public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(nameof(FontSize), typeof(double), typeof(RadioButton), 20.0, propertyChanged: (bo, ov, nv) => (bo as RadioButton).FontSize = (double)nv);
-
-        void Tapped()
-        {
-            IsChecked = !IsChecked;
-            Clicked?.Invoke(this, new EventArgs());
-            ClickCommand?.Execute(this);
         }
     }
 }
