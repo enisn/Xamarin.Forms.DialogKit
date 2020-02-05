@@ -1,0 +1,92 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.41">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <AssemblyName>Plugin.DialogKit</AssemblyName>
+    <RootNamespace>Plugin.DialogKit</RootNamespace>
+    <PackageId>Xamarin.Forms.DialogKit</PackageId>
+
+    <Product>$(AssemblyName) ($(TargetFramework))</Product>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <AssemblyFileVersion>2.0.0.0</AssemblyFileVersion>
+    <Version>2.0.0</Version>
+    <PackageVersion>2.0.0.0</PackageVersion>
+    <PackOnBuild>false</PackOnBuild>
+    <NeutralLanguage>en</NeutralLanguage>
+    <LangVersion>7.3</LangVersion>
+    <DefineConstants>$(DefineConstants);</DefineConstants>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
+    <UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <Authors>enisn</Authors>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>Ready to use dialogs with Rg.Plugins.Popup and InputKit</Description>
+    <RepositoryUrl>https://github.com/enisn/Xamarin.Forms.DialogKit</RepositoryUrl>
+    <PackageReleaseNotes>Updated to InputKit v3.1</PackageReleaseNotes>
+    <PackageTags>Xamarin, Xamarin Forms, InputKit, Input, Dialog, Checkbox, Radio Button</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="3.2.0.839982" PrivateAssets="All" />
+    <PackageReference Include="Xamarin.Forms.InputKit" Version="3.1.1" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.0.4" />
+    <Compile Include="Shared\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Shared\CrossDiaglogKit.cs" />
+    <None Include="icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Shared\DialogKit.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Shared\GlobalSetting.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Shared\IDialogKit.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\CheckBoxView.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\ColorPickerView.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\InputView.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\RadioButtonView.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Views\CheckBoxView.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ColorPickerView.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InputView.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RadioButtonView.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

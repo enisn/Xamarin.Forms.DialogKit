@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"             
+             xmlns:local="clr-namespace:Plugin.DialogKit"
+             x:Class="Plugin.DialogKit.Views.RadioButtonView">
+  <ContentView.Content>
+        <StackLayout Padding="10" BackgroundColor="White" VerticalOptions="CenterAndExpand" Margin="25">
+            <Label FontAttributes="Bold" FontSize="Large" Text="{Binding Title}"/>
+            <Label FontSize="Large" Text="{Binding Message}"/>
+            <controls:SelectionView x:Name="selectionView" SelectionType="RadioButton" ColumnNumber="1">
+            </controls:SelectionView>
+
+            <StackLayout Margin="10" Orientation="Horizontal">
+                <Button Text="{Binding OK}" Clicked="Confirm_Clicked" HorizontalOptions="FillAndExpand"/>
+                <Button Text="{Binding Cancel}" Clicked="Cancel_Clicked" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
